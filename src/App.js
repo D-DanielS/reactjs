@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 
-class Titulo extends Component{
-  render(){
-    return(
-      <h1>{this.props.mensaje}</h1>
-    )
-  }
-}
-
 class App extends Component {
   constructor(...args){
     super(...args)
     this.state = {
-      'mensaje': 'Mensaje Inicial'
+      'contador': 5
     }
   }
 
-  cambiarTitulo(){
+  sumar(){
     this.setState({
-      'mensaje': 'Mensaje Cambiado'
+      contador: this.state.contador + 1
+    })
+  }
+  restar(){
+    this.setState({
+      contador: this.state.contador -1
     })
   }
 
   render() {
     return (
       <div className="App">
-        <Titulo mensaje={this.state.mensaje}/>
-        <button onClick={this.cambiarTitulo.bind(this)}> Cambiar titulo</button>
+        <button onClick={this.sumar.bind(this)}>+</button>
+        <button onClick={this.restar.bind(this)}>-</button>
+        
+        <span>Contador: {this.state.contador} </span>
       </div>
     );
   }
